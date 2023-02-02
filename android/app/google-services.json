@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "888879279044",
+    "project_id": "labmanagement-44544",
+    "storage_bucket": "labmanagement-44544.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888879279044:android:71b6bd63c1f29d12629291",
+        "android_client_info": {
+          "package_name": "com.example.lab_management"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "888879279044-m0t4n1fbfbhdl3rii9ej1nhsv3j2t7n6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfUpiSi6RqVBXQ_YjYCzyLyQzqZvLfYF0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "888879279044-m0t4n1fbfbhdl3rii9ej1nhsv3j2t7n6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
