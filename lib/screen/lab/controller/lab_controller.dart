@@ -3,9 +3,9 @@ import 'package:lab_management/utils/model/LabDataModel.dart';
 
 class LabController extends GetxController {
   List<Map> timeList = [
-    {"time": "07:00 - 08:00 AM", "value": "07-08A"},
-    {"time": "08:00 - 09:00 AM", "value": "08-09A"},
-    {"time": "09:00 - 10:00 AM", "value": "09-10A"},
+    {"time": "07:00 - 08:00 AM", "value": "7-8A"},
+    {"time": "08:00 - 09:00 AM", "value": "8-9A"},
+    {"time": "09:00 - 10:00 AM", "value": "9-10A"},
     {"time": "10:00 - 11:00 AM", "value": "10-11A"},
     {"time": "11:00 - 12:00 AM", "value": "11-12A"},
     {"time": "12:00 - 01:00 AM", "value": "12-01P"},
@@ -20,5 +20,5 @@ class LabController extends GetxController {
 
   RxList<dynamic> studList = <dynamic>[].obs;
 
-  RxString selectedTime = "07-08A".obs;
+  RxString selectedTime = "7-8A".obs;
 }

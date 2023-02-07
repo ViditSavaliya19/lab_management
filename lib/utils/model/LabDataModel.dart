@@ -8,7 +8,7 @@
 class LabDataModel {
   LabDataModel({
     String? pcNo,
-    int? grid,
+    dynamic grid,
     String? name,
     String? lp,
     String? course,
@@ -31,14 +31,14 @@ class LabDataModel {
     _faculty = json['Faculty'];
   }
   String? _pcNo;
-  int? _grid;
+  dynamic _grid;
   String? _name;
   String? _lp;
   String? _course;
   String? _faculty;
   LabDataModel copyWith({
     String? pcNo,
-    int? grid,
+    dynamic grid,
     String? name,
     String? lp,
     String? course,
@@ -53,7 +53,7 @@ class LabDataModel {
         faculty: faculty ?? _faculty,
       );
   String? get pcNo => _pcNo;
-  int? get grid => _grid;
+  dynamic get grid => _grid;
   String? get name => _name;
   String? get lp => _lp;
   String? get course => _course;

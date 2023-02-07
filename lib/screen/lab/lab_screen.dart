@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lab_management/screen/dashboard/widgets/stdlist_widget.dart';
 import 'package:lab_management/utils/api_http.dart';
 import 'package:lab_management/screen/lab/controller/lab_controller.dart';
 
@@ -36,6 +37,7 @@ class _LabScreenState extends State<LabScreen> {
         children: [
           Obx(
             () => DropdownButton(
+              isExpanded: true,
               value: _labConrtoller.selectedTime.value,
               onChanged: (value) {
                 _labConrtoller.selectedTime.value = value;
@@ -44,53 +46,32 @@ class _LabScreenState extends State<LabScreen> {
             ),
           ),
           Expanded(
-            child: FutureBuilder(
-              future: ApiHttp.apiHttp.getAllData("9-10A", labName),
-              builder: (context, snapshot) {
-                if (snapshot.hasError) {
-                  return Text("${snapshot.error}");
-                } else if (snapshot.hasData) {
-                  _labConrtoller.studList.value = snapshot.data!;
+            child: Obx(
+              () => FutureBuilder(
+                future: ApiHttp.apiHttp
+                    .getAllData("${_labConrtoller.selectedTime}", labName),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return Text("${snapshot.error}");
+                  } else if (snapshot.hasData) {
+                    _labConrtoller.studList.value = snapshot.data!;
 
-                  print(_labConrtoller.studList);
-                  return ListView.builder(
-                    reverse: true,
-                    itemCount: _labConrtoller.studList.length,
-                    itemBuilder: (context, i) => (_labConrtoller
-                            .studList[i].pcNo
-                            .toString()
-                            .contains('r'))
-                        ? Card(
-                            child: ExpansionTile(
-                              title: Text("${_labConrtoller.studList[i].name}"),
-                              leading:
-                                  Text("${_labConrtoller.studList[i].pcNo}"),
-                              subtitle:
-                                  Text("${_labConrtoller.studList[i].grid}"),
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    IconButton(
-                                        onPressed: () {},
-                                        icon: Icon(Icons.edit)),
-                                    IconButton(
-                                        onPressed: () {},
-                                        icon: Icon(Icons.delete)),
-                                    IconButton(
-                                        onPressed: () {},
-                                        icon: Icon(Icons.call)),
-                                  ],
-                                )
-                              ],
-                            ),
-                          )
-                        : Container(),
-                  );
-                }
-                return CircularProgressIndicator();
-              },
+                    print(_labConrtoller.studList);
+                    return ListView.builder(
+                      reverse: true,
+                      itemCount: _labConrtoller.studList.length,
+                      itemBuilder: (context, i) => (_labConrtoller
+                              .studList[i].pcNo
+                              .toString()
+                              .contains('r'))
+                          ? StdItemWidget(
+                              i: i, studList: _labConrtoller.studList.value)
+                          : Container(),
+                    );
+                  }
+                  return CircularProgressIndicator();
+                },
+              ),
             ),
           ),
         ],

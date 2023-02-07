@@ -28,11 +28,11 @@ class ApiHttp {
     var response = await http.get(Uri.parse(apiReadLink));
     var json = jsonDecode(response.body);
 
-    List<dynamic> data = json.map((e) => LabDataModel.fromJson(e)).toList();
-
     print("======================================");
     print(json);
     print("======================================");
+
+    List<dynamic> data = json.map((e) => LabDataModel.fromJson(e)).toList();
 
     return data;
   }
