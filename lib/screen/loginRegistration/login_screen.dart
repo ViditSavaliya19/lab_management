@@ -10,8 +10,10 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  TextEditingController txtEmail =TextEditingController();
-  TextEditingController txtPassword =TextEditingController();
+  TextEditingController txtEmail =
+      TextEditingController(text: "admin@gmail.com");
+  TextEditingController txtPassword = TextEditingController(text: "admin@123");
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -19,17 +21,25 @@ class _SignInScreenState extends State<SignInScreen> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextField(controller:  txtEmail),
+            TextField(controller: txtEmail),
             SizedBox(height: 20),
-            TextField(controller:  txtPassword),
+            TextField(controller: txtPassword),
             SizedBox(height: 50),
-            ElevatedButton(onPressed: (){
+            ElevatedButton(
+                onPressed: () {
+                  FirebaseHelper.firebaseHelper
+                      .signIn(txtEmail.text, txtPassword.text);
 
-              FirebaseHelper.firebaseHelper.signIn(txtEmail.text, txtPassword.text);
-
-              Get.toNamed('dashScreen');
-
-            }, child: Text("SingUp"))
+                  Get.toNamed('dashScreen');
+                },
+                child: Text("SingIn")),
+            SizedBox(height: 50),
+            TextButton(
+              onPressed: () {
+                Get.toNamed('signUp');
+              },
+              child: Text("Create Account -> "),
+            ),
           ],
         ),
       ),
