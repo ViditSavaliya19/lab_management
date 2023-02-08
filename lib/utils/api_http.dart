@@ -12,7 +12,7 @@ class ApiHttp {
   String apiPostDataLink =
       "https://script.google.com/macros/s/AKfycbxu0ZotPqCOQrKrTBS7CSLmz8lDWSpbn-UFHYZ_ifPF9oXL7KD1J2v2MQ1huYb5EpUD/exec";
 
-  Future<String> addRecordPostApi() async {
+  Future<String> addRecordPostApi({required LabDataModel l1}) async {
     var response = await http.post(Uri.parse(apiPostDataLink));
 
     if (response.statusCode == 200) {

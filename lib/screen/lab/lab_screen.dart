@@ -69,7 +69,9 @@ class _LabScreenState extends State<LabScreen> {
                           : Container(),
                     );
                   }
-                  return CircularProgressIndicator();
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
                 },
               ),
             ),
@@ -86,3 +88,7 @@ class _LabScreenState extends State<LabScreen> {
     );
   }
 }
+
+/*
+* POST
+* have su karvanu che ?? */
