@@ -16,6 +16,8 @@ class _DashScreenState extends State<DashScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text("LMS"),
+        backgroundColor: Colors.redAccent,
+        titleTextStyle: const TextStyle(color: Colors.white, fontSize: 20),
       ),
       body: StreamBuilder(
         stream: FirebaseHelper.firebaseHelper.getAllLab(),
@@ -30,6 +32,7 @@ class _DashScreenState extends State<DashScreen> {
               itemCount: dataMap!.length,
               itemBuilder: (context, index) {
                 return ListTile(
+                  tileColor: Colors.red.shade100,
                   onTap: () {
                     Get.toNamed('labScreen', arguments: "${dataMap['$index']}");
                   },

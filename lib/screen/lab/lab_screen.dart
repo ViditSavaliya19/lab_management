@@ -55,7 +55,6 @@ class _LabScreenState extends State<LabScreen> {
                     return Text("${snapshot.error}");
                   } else if (snapshot.hasData) {
                     _labConrtoller.studList.value = snapshot.data!;
-
                     print(_labConrtoller.studList);
                     return ListView.builder(
                       reverse: true,
@@ -65,11 +64,15 @@ class _LabScreenState extends State<LabScreen> {
                               .toString()
                               .contains('r'))
                           ? StdItemWidget(
-                              i: i, studList: _labConrtoller.studList.value)
+                              i: i,
+                              studList: _labConrtoller.studList.value,
+                              sheetName: labName,
+                              time: _labConrtoller.selectedTime.value,
+                            )
                           : Container(),
                     );
                   }
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 },

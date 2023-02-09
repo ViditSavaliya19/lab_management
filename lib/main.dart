@@ -15,6 +15,7 @@ void main() async {
     Sizer(
       builder: (context, orientation, deviceType) => GetMaterialApp(
         debugShowCheckedModeBanner: false,
+        theme: ThemeData(useMaterial3: true),
         initialRoute: 'dashScreen',
         routes: {
           '/': (p0) => SignInScreen(),

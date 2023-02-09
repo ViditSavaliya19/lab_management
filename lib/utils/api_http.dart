@@ -12,14 +12,41 @@ class ApiHttp {
   String apiPostDataLink =
       "https://script.google.com/macros/s/AKfycbxu0ZotPqCOQrKrTBS7CSLmz8lDWSpbn-UFHYZ_ifPF9oXL7KD1J2v2MQ1huYb5EpUD/exec";
 
-  Future<String> addRecordPostApi({required LabDataModel l1}) async {
-    var response = await http.post(Uri.parse(apiPostDataLink));
+  Future<String> addRecordPostApi(
+      {required LabDataModel l1,
+      required String sheetName,
+      required String time}) async {
+    print({
+      'sheetName': '$sheetName',
+      'pcNo': '${l1.pcNo}',
+      'grid': '${l1.grid}',
+      'name': '${l1.name}',
+      'device': '${l1.lp}',
+      'course': '${l1.course}',
+      'faculty': '${l1.faculty}',
+      'time': time,
+    });
 
-    if (response.statusCode == 200) {
+    var response = await http.post(
+      Uri.parse(apiPostDataLink),
+      encoding: Encoding.getByName('utf-8'),
+      body: {
+        'sheetName': '$sheetName',
+        'pcNo': '${l1.pcNo}',
+        'grid': '${l1.grid}',
+        'name': '${l1.name}',
+        'device': '${l1.lp}',
+        'course': '${l1.course}',
+        'faculty': '${l1.faculty}',
+        'time': time,
+      },
+    );
+
+    if (response.statusCode == 302) {
       return "Success";
+    } else {
+      return "Failed To upload Data";
     }
-
-    return "Failed To upload Data";
   }
 
   Future<List<dynamic>> getAllData(String time, String lab) async {
